@@ -9,3 +9,30 @@ directory are:
 
 * `region`: container module for all of the network resources within a region. This is instantiated once per region.
 * `subnet`: represents a subnet within a given availability zone. This is instantiated twice per region, using the first two availability zones supported within the target AWS account.
+
+Run it with profile support:
+  1. Setup local credentials and config under ~/.aws/ as below:
+  ```
+:.aws $ pwd
+~/.aws
+:.aws $ ls
+accessKeys.csv			config				credentials			new_user_credentials.csv
+:.aws $ more config 
+[default]
+region = us-east-1
+output = json
+[profile user1]
+region = us-east-2
+output = json
+:.aws $ more credentials 
+[default]
+aws_access_key_id = "replace it with your IAM user aws_access_key_id"
+aws_secret_access_key = "replace it with your IAM user aws_secret_access_key"
+[user1]
+aws_access_key_id = "replace it with your IAM user aws_access_key_id"
+aws_secret_access_key = "replace it with your IAM user aws_secret_access_key"
+````
+  2. Run the terraform with prfoile as the input variable
+  ```
+  $terraform apply -var "profile=user1"
+  ```
