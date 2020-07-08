@@ -3,9 +3,12 @@ variable "region" {
 }
 
 variable "base_cidr_block" {}
-
+variable "profile" {
+  description="The profile configured in the ~/.aws/config"
+}
 provider "aws" {
   region = "${var.region}"
+  profile = "${var.profile}"
 }
 
 variable "region_numbers" {
