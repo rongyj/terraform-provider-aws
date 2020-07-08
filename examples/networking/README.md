@@ -16,7 +16,7 @@ Run it with profile support:
 :.aws $ pwd
 ~/.aws
 :.aws $ ls
-accessKeys.csv			config				credentials			new_user_credentials.csv
+	config				credentials	
 :.aws $ more config 
 [default]
 region = us-east-1
